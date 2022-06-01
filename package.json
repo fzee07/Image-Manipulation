@@ -1,0 +1,40 @@
+{
+  "name": "image-manipulation",
+  "version": "1.0.0",
+  "description": "Resizing the image with 2 apis, one will give you the size of thumbnail and the other will take sizes in the request",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server/server.js",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fzee07/Image-Manipulation.git"
+  },
+  "keywords": [
+    "image",
+    "resizing",
+    "manipulation",
+    "thumb",
+    "thumbnail"
+  ],
+  "author": "fzee07",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fzee07/Image-Manipulation/issues"
+  },
+  "homepage": "https://github.com/fzee07/Image-Manipulation#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.5",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.30.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
