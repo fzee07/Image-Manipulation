@@ -17,9 +17,13 @@ app.use(express.json("content-type", "application/json"));
 // app.use(express.static());
 
 // console.log(path.join(__dirname, "../uploads/actual-size"));
-app.use(express.static(path.join(__dirname, "../uploads/actual-size")));
-app.use(express.static(path.join(__dirname, "../uploads/resized")));
-app.use(express.static(path.join(__dirname, "../uploads/thumb-size")));
+const actual_size = path.join(__dirname, "../uploads/actual-size");
+const resized = path.join(__dirname, "../uploads/resized");
+const thumb_size = path.join(__dirname, "../uploads/thumb-size");
+
+app.use(express.static(actual_size));
+app.use(express.static(resized));
+app.use(express.static(thumb_size));
 
 app.use("/api/v1/upload", upload);
 app.use("/api/v1/user", user);
