@@ -23,12 +23,12 @@ router.post(
 );
 
 // API for Resizing Image
-router.post("/resizing-image", uploads.single("file"), resizedImageUpload);
+router.post("/resizing-image", upload.single("file"), resizedImageUpload);
 
 // API for Creating Thumbnail of an Image
 router.post(
   "/creating-thumb-image",
-  uploads.single("file"),
+  upload.single("file"),
   thumbSizeImageUpload
 );
 
