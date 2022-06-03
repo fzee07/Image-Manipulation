@@ -9,6 +9,7 @@ const {
   thumbSizeImageUpload,
   getImage,
 } = require("../controllers/upload/index");
+const upload = require("../controllers/upload/upload");
 
 // API for getting image
 router.get("/get-file", getImage);
@@ -16,7 +17,8 @@ router.get("/get-file", getImage);
 // API for Uploading Image file
 router.post(
   "/actual-size-image-upload",
-  uploads.single("file"),
+  // uploads.single("file"),
+  upload.single("file"),
   actualSizeImageUpload
 );
 
