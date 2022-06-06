@@ -12,7 +12,7 @@ const {
 const upload = require("../controllers/upload/upload");
 
 // API for getting image
-router.get("/get-file", getImage);
+router.get("/images", getImage);
 
 // API for Uploading Image file
 router.post(

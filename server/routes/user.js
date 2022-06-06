@@ -7,6 +7,6 @@ router.post("/login", loginUser);
 
 router.post("/register", registerUser);
 
-router.post("/images", getImage);
+router.get("/images", getImage);
 
 module.exports = router;
