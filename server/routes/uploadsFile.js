@@ -11,9 +11,6 @@ const {
 } = require("../controllers/upload/index");
 const upload = require("../controllers/upload/upload");
 
-// API for getting image
-router.get("/images", getImage);
-
 // API for Uploading Image file
 router.post(
   "/actual-size-image-upload",
