@@ -1,23 +1,28 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const imagesNameSchema = new Schema({
-  image_url: {
-    type: String,
+const imagesNameSchema = new Schema(
+  {
+    title: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
+    image_url: {
+      imageUrlOriginal: {
+        type: String,
+      },
+      imageUrlResize: {
+        type: String,
+      },
+      imageUrlCompressed: {
+        type: String,
+      },
+    },
   },
-  file_input_name: {
-    type: String,
-  },
-  file_original_name: {
-    type: String,
-  },
-  file_new_name: {
-    type: String,
-  },
-  file_size: {
-    type: String,
-  },
-});
+  { versionKey: false }
+);
 
 const ImageName = mongoose.model("ImageName", imagesNameSchema);
 

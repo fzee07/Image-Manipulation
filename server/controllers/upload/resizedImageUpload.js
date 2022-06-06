@@ -2,9 +2,10 @@ const multer = require("multer"),
   // uploadImage = require("../../models/fileUpload"),
   sharp = require("sharp");
 
+const dest = "uploads/image/resized";
 // Locally Storing Images
 const Storage = multer.diskStorage({
-  destination: "uploads/image/resized",
+  destination: dest,
   // filename: function (req, file, cb) {
   //   const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
   //   cb(null, file.fieldname + "-" + uniqueSuffix);
@@ -16,7 +17,6 @@ const resizedImageUpload = async (req, res, err) => {
     const bufferFile = req.file.buffer;
     const originalFileName = req.file.originalname;
     const resize = "resized";
-    console.log(req.body);
 
     let height = req.body.height;
     if (height == "") {
@@ -31,11 +31,12 @@ const resizedImageUpload = async (req, res, err) => {
       width = parseInt(width);
     }
 
-    const newName = `${resize}-${originalFileName}`;
-    // console.log("newName: " + newName);
+    // Generating New Name
+    // const newName = `${resize}-${originalFileName}`;
 
-    console.log("file", req.file);
-    // console.log("body", req.body);
+    const name = req.body.name;
+    const modName = name.replace(/ /g, "-");
+    const newName = `${modName}.jpg`;
 
     const IMAGE = await sharp(bufferFile)
       .resize({
@@ -46,13 +47,13 @@ const resizedImageUpload = async (req, res, err) => {
       })
       .toFile("uploads/image/resized/" + newName);
 
-    res.status(200).json({
-      success: true,
-      data: newName,
-      image_data: IMAGE,
-    });
+    const servingFile = "image/resized";
+    const toReturn = {
+      newName,
+      servingFile,
+    };
 
-    console.log("IMAGE", IMAGE);
+    return toReturn;
   } catch (err) {
     console.log(err);
   }
