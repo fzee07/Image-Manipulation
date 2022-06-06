@@ -1,7 +1,7 @@
 const ImageName = require("../../models/ImageName");
 
 const getImage = async (req, res) => {
-  await ImageName.find((err, result) => {
+  ImageName.find((err, result) => {
     if (err) {
       console.log(err);
       res.status(404).json({
