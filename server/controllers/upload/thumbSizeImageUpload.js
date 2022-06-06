@@ -2,9 +2,10 @@ const multer = require("multer"),
   // uploadImage = require("../../models/fileUpload"),
   sharp = require("sharp");
 
+const dest = "uploads/image/thumb-size";
 // Locally Storing images
 const Storage = multer.diskStorage({
-  destination: "uploads/image/thumb-size",
+  destination: dest,
   // filename: function (req, file, cb) {
   //   const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
   //   cb(null, file.fieldname + "-" + uniqueSuffix);
@@ -24,11 +25,10 @@ const thumbSizeImageUpload = async (req, res) => {
     const originalFileName = req.file.originalname;
     const resize = "thumb";
 
-    const newName = `${resize}-${originalFileName}`;
-    // console.log("newName: " + newName);
-
-    console.log("file", req.file);
-    // console.log("body", req.body);
+    // const newName = `${resize}-${originalFileName}`;
+    const name = req.body.name;
+    const modName = name.replace(/ /g, "-");
+    const newName = `${modName}.jpg`;
 
     const IMAGE = await sharp(bufferFile)
       .resize({
@@ -39,11 +39,12 @@ const thumbSizeImageUpload = async (req, res) => {
       })
       .toFile("uploads/image/thumb-size/" + newName);
 
-    res.status(200).json({
-      success: true,
-      data: newName,
-      image_data: IMAGE,
-    });
+    const servingFile = "image/thumb-size";
+    const toReturn = {
+      newName,
+      servingFile,
+    };
+    return toReturn;
 
     console.log("IMAGE", IMAGE);
   } catch (err) {
