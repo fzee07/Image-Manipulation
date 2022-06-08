@@ -32,8 +32,7 @@ const thumbSizeImageUpload = async (req, res) => {
 
     const IMAGE = await sharp(bufferFile)
       .resize({
-        width: 150,
-        height: 200,
+        width: 250,
         fit: "contain",
         kernel: sharp.kernel.nearest,
       })

@@ -40,8 +40,7 @@ const resizedImageUpload = async (req, res, err) => {
 
     const IMAGE = await sharp(bufferFile)
       .resize({
-        width: width,
-        height: height,
+        width: 800,
         fit: "contain",
         kernel: sharp.kernel.nearest,
       })
