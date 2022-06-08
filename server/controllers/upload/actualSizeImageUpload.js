@@ -38,9 +38,9 @@ const actualSizeImageUpload = async (req, res) => {
       .toFile("uploads/image/actual-size/" + newName);
 
     const resize = await resizedImageUpload(req);
-    console.log("resize", resize);
+    // console.log("resize", resize);
     const thumb = await thumbSizeImageUpload(req);
-    console.log("thumb", thumb);
+    // console.log("thumb", thumb);
     const link_prefix = `http://localhost:${PORT}/`;
 
     // const image_size_in_KB = IMAGE.size;

@@ -7,14 +7,16 @@ const {
   actualSizeImageUpload,
   resizedImageUpload,
   thumbSizeImageUpload,
-  getImage,
 } = require("../controllers/upload/index");
 const upload = require("../controllers/upload/upload");
+const {
+  imageInputValidation,
+} = require("../controllers/upload/validation/imageInputValidation");
 
 // API for Uploading Image file
 router.post(
   "/actual-size-image-upload",
-  // uploads.single("file"),
+  imageInputValidation,
   upload.single("file"),
   actualSizeImageUpload
 );
