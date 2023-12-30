@@ -19,7 +19,7 @@ const registerUser = async (req, res) => {
         });
       })
       .catch((err) => {
-        res,
+        res.
           status(500).json({
             success: false,
             message: "User not saved, Something went wrong",
