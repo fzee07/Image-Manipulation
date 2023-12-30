@@ -5,7 +5,7 @@ const loginUser = async (req, res) => {
   try {
     await Register.find({ username }, (err, result) => {
       if (err) {
-        res.status(404).joso({
+        res.status(404).josn({
           success: false,
           message: "User not found",
         });
